@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Test</title>
+  </head>
+  <body>
+    <h1 id="main-heading">What is jQuery?</h1>
+
+    <p>jQuery is the most popular JavaScript library.</p>
+
+    <h1>Why should you learn jQuery?</h1>
+
+    <p class="note">
+      Note: jQuery functions use the DOM API (like
+      <code>document.getElementById</code>).
+    </p>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("h1").text("Hello");
+      $('<p id="test">My <em>new</em> text</p>').appendTo("body");
+    </script>
+  </body>
+</html>
