@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radio 버튼</title>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#regBtn").click(function () {
+          invalidItem(); // 함수 호출
+        });
+
+        $(":reset").click(function () {
+          $("userId").focus();
+        });
+
+        // 입력 유효성 검사
+        function invalidItem() {
+          if ($("input[name=gender]:radio:checked").length < 1) {
+            alert("성별을 선택하세요.");
+            return false;
+          }
+
+          alert("회원 가입을 축하합니다.");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="radio" name="gender" id="man" />남자
+      <input type="radio" name="gender" id="woman" />여자
+
+      <input type="button" id="regBtn" value="회원가입" />
+      <input type="reset" value="취소" />
+    </form>
+  </body>
+</html>
