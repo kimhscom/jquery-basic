@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>inputbox</title>
+    <style>
+      div {
+        padding: 5px;
+      }
+      .item {
+        float: center;
+        width: 100px;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.js"
+      integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $("#regBtn").click(function () {
+          invalidItem(); // 함수 호출
+        });
+
+        $(":reset").click(function () {
+          $("userId").focus();
+        });
+
+        // 입력 유효성 검사
+        function invalidItem() {
+          // 입력패턴 검사
+          var pattern = /^[a-z0-9_-]{3, 16}$/; // ^는 시작하는 문자 $는 끝나는 문자
+          var num = /^[0-9]+$/;
+
+          // (앞/뒤) 공백제거
+          var userId = $.trim($("#userId").val());
+          var userName = $.trim($("#userName").val());
+          var pwd = $.trim($("#pwd").val());
+
+          if (userId == "") {
+            alert("아이디를 입력하세요.");
+            $("#userId").focus();
+            return false;
+          } else {
+            if (!pattern.test(userId)) {
+              // test는 패턴에 맞으면 true, 맞지 않으면 false 값 return
+              alert(
+                "아이디는 영문소문자로 시작하고 ₩r₩n영문소문자, 숫자, 언더바(_)만 사용하실 수 있습니다!"
+              );
+              $("#userId").val("").focus();
+              return false;
+            }
+          }
+
+          if (userName == "") {
+            alert("이름을 입력하세요");
+            $("#userName").focus();
+            return false;
+          }
+
+          if (pwd == "") {
+            alert("비밀번호를 입력하세요!");
+            $("#pwd").focus();
+            return false;
+          } else {
+            if (!num.test(pwd)) {
+              alert("비밀번호는 숫자만 가능합니다!");
+              $("#pwd").val();
+              $("#pwd").focus();
+              $("#pwd").select();
+              return false;
+            }
+          }
+
+          if ($("#pwd").val() != $("#pwdConfirm").val()) {
+            alert("암호가 일치하지 않습니다.");
+            $("#pwdConfirm").val("").focus();
+            return false;
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      아이디 <input id="userId" type="text" /> <br />
+      이름 <input id="userName" type="text" /> <br />
+      암호 <input id="pwd" type="password" /> <br />
+      암호확인 <input id="pwdConfirm" type="password" /> <br />
+      <input type="button" id="regBtn" value="회원가입" />
+      <input type="reset" value="취소" />
+    </form>
+  </body>
+</html>
