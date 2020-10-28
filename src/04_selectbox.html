@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>selectbox 활용</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <select id="PrettyGirls">
+      <option value="numOne">한가인</option>
+      <option value="numTwo">전지현</option>
+      <option value="numThree">김민정</option>
+      <option value="numFour">신민아</option>
+      <option value="numFive">이연희</option>
+      <option value="numSix">이나영</option>
+      <option value="numSeven">홍은희</option>
+    </select>
+
+    <input type="button" value="value값" onclick="fnValueSel();" />
+    <input type="button" value="Text값" onclick="fnTextValalert();" />
+    <input type="button" value="index값" onclick="idxValueGo();" />
+
+    <select id="slcNum">
+      <option value="1">numOne</option>
+      <option value="2">numTwo</option>
+      <option value="3">numThree</option>
+      <option value="4">numFour</option>
+      <option value="5">numFive</option>
+      <option value="6">numSix</option>
+      <option value="7">numSeven</option>
+    </select>
+
+    <input type="button" value="선택 시키기" onclick="fnSelectedCombo();" />
+    <input type="button" value="제거" onclick="fnRemoveCombo();" />
+    <input type="button" value="추가" onclick="fnappendCombo();" />
+    <input type="button" value="교채" onclick="fnreplaceCombo();" />
+
+    <script>
+      // 밸류값 가져오기
+      function fnValueSel() {
+        alert($("#PrettyGirls").val());
+      }
+
+      // 텍스트값 가져오기
+      function fnTextValalert() {
+        alert($("#PrettyGirls option:selected").text());
+      }
+
+      // 인덱스 값 가져오기
+      function idxValueGo() {
+        alert(
+          $("#PrettyGirls option").index($("#PrettyGirls option:selected"))
+        );
+      }
+
+      /* value 값으로 셀렉트 시키는 방법 두가지
+      $(":selected") - 셀렉트된 값 컨트롤 */
+
+      function fnSelectedCombo() {
+        var slcNumOp = $("#slcNum option:selected").text();
+        var slcNumOpval = $("#slcNum option:selected").val();
+
+        // 1번
+        $("#PrettyGirls").val(slcNumOp);
+        // 2번
+        // $("#PrettyGirls").val(slcNumOp).attr("selected", "selected");
+      }
+
+      // 제거하기
+      function fnRemoveCombo() {
+        var slcNumOp = $("#slcNum option:selected").val() - 1;
+
+        // $("#PrettyGirls option:eq('0')").remove();
+        $("#PrettyGirls option:eq('" + slcNumOp + "')").remove();
+        // 첫번째 item 삭제
+        // $("#PrettyGirls option:first").remove();
+        // 마지막 item 삭제
+        // $("#PrettyGirls option:last").remove();
+      }
+
+      // append를 이용한 셀렉트 박스 옵션 추가
+      function fnappendCombo() {
+        // 셀렉트박스 옵션 개수 구하기
+        var sizeSlc = $("#PrettyGirls option").size() + 1;
+
+        $("#PrettyGirls").append(
+          "<option value='" + sizeSlc + "'>성형인간</option>"
+        );
+      }
+
+      // replace 교체
+      function fnreplaceCombo() {
+        // 셀렉트박스 옵션 개수 구하기
+        var slcNumOp = $("#slcNum option:selected").val() - 1;
+
+        $("#slcNum option:eq('" + slcNumOp + "')").replaceWith(
+          "<option value='" +
+            $("#slcNum option:selected").text() +
+            "'>한효주</option>"
+        );
+      }
+    </script>
+  </body>
+</html>
