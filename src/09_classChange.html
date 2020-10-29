@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클래스 변경</title>
+    <style>
+      .intro {
+        font-size: 150%;
+        color: red;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button[id=Add]").click(function () {
+          $("p:first").addClass("intro");
+        });
+        $("button[id=Remove]").click(function () {
+          $("p:first").removeClass("intro");
+        });
+        $("button[id=Has]").click(function () {
+          alert($("p").hasClass("intro"));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <button id="Add">addClass</button>
+    <button id="Remove">removeClass</button>
+    <button id="Has">hasClass</button>
+  </body>
+</html>
