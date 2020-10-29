@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블럭 감추기/보이기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#hide").click(function () {
+          $("img").hide();
+        });
+        $("#show").click(function () {
+          $("img").show();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img src="./images/001.png" />
+
+    <br />
+    <br />
+
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+  </body>
+</html>
